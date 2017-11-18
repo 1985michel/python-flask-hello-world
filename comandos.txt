@@ -1,0 +1,75 @@
+cria um ambiente virtual de desenvolvimento com um python isolado
+py -m venv virtual
+
+
+acessa o python do ambiente virtual
+virtual\scripts\python
+
+
+instalando coisas no ambiente virtual
+virtual\scripts\pip install flask
+
+>>>>> HEROKU
+
+ABRA UM CMD E VÁ À PASTA ONDE ESTA SEU CÓDIGO PYTHON
+
+fazer login no heroku
+heroku login
+
+criar um app no heroku
+heroku create nomedoapp
+
+para ver a lista de apps que tenho no heroku
+heroku apps
+
+para ver seu app no navegador ( digite no brownser)
+nomedoapp.herokuapp.com
+
+para listas o que vc tem instalado no python virtual 
+..\virtual\scripts\pip freeze
+
+
+installe o gunicorn no seu ambiente virtual
+..\virtual\scripts\pip install gunicorn
+
+para o heroku aceitar seu app precisamos de três arquivos na pasta onde esta o arquivo python:
+>>>>>>> PRIMEIRO ARQUIVO: requirements.txt [AUTOCRIADO]
+..\virtual\scripts\pip freeze > requirements.txt
+
+>>>>>>> SEGUNDO ARQUIVO: Procfile [SEM EXTENSÃO]
+web: gunicorn nomedoarquivopyprincipal:app  
+
+>>>>>>> TERCEIRO ARQUIVO: runtime.txt
+[versão do python que vc quer que o heroku utilize]
+link para ver o atual: https://devcenter.heroku.com/articles/python-support#supported-python-runtimes
+python-3.6.2
+
+
+INICIE O GIT: git init
+
+COLOQUE TODOS OS ARQUIVOS NO COMMIT: git add .
+
+FAÇA O COMMIT: git commit -m "first commit"
+
+DIGA PARA O HEROKU EM QUAL APP VC QUER FAZER O COMMIT:
+heroku git:remote --app nomedoseuapp
+
+CONFIGURE SEU E-MAIL (? NÃO SEI PQ POIS JÁ FIZ O LOGIN)
+git config --global user.email "michelfiribeiro@outlook.com"   [TUDO NA MESMA LINHA]
+
+DIGA AO HEROKU QUAL NOME DE USUÁRIO VC VAI USAR (?)
+git config --global user.name "1985michel"
+
+SUBA OS ARQUIVOS:
+git push heroku master
+
+
+PARA FAZER UPDATES:
+1 - CMD vá até a pasta onde está seu script python principal
+2 - faça login no heroku: heroku login
+3 - OPCIONAL: VERIFIQUE COMO ESTÁ SEU HEROKU: heroku info
+4 - git add .
+5 - git commit -m "escreva o que mudou"
+6 - git push heroku master
+
+
